@@ -5,10 +5,6 @@ export class Position extends Component {
     x: 0,
     y: 0
   }
-
-  get coordinates() {
-    return `x: ${x}\ny: ${y}`;
-  }
 }
 
 export class Sprite extends Component {
