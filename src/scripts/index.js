@@ -1,7 +1,9 @@
-import '../styles/index.scss';
+import {Display} from 'rot-js';
 
-if (process.env.NODE_ENV === 'development') {
-  require('../index.html');
-}
+let options = {
+	width: 80,
+	height: 24
+};
 
-console.log('webpack starterkit');
+let display = new Display(options);
+document.body.append(display.getContainer());
