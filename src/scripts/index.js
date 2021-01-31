@@ -15,15 +15,26 @@ const world = new World();
 world.registerComponent(Position);
 world.registerComponent(Sprite);
 
-world.registerTags('Terrain', 'Floor');
+world.registerTags('Cell', 'Floor', 'Display');
 
-let entity = world.createEntity({
-  tags: ['Terrain', 'Floor'],
-  components: [
-    {
-      type: 'Position',
-      x: 20,
-      y: 20
-    }
-  ]
-});
+const cells = new Array(options['height']).fill(new Array(options['width']).fill(null));
+
+cells.forEach((line, lineIndex) => {
+  line.forEach((_, columnIndex) => {
+    const entity = world.createEntity({
+      tags: ['Cell', 'Floor', 'Display'],
+      components: [
+        {
+          type: 'Position',
+          x: 20,
+          y: 20
+        },
+        {
+          type: 'Sprite',
+          glyph: '.'
+        }
+      ]
+    });
+    cells[lineIndex][columnIndex] = entity;
+  })
+})
